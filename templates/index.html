@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des commandes</title>
+</head>
+<body>
+
+<a href="{% url 'ajouter_commande' %}">
+    <input type="button" value="Ajouter commande">
+</a>
+
+<br><br>
+
+
+{% for commande in commandes %}
+    {% for quantite_produit in quantite_produits %}
+
+        <table>
+            <tr>
+                <td>{{ commande.date }}</td>
+                <td>{{ commande.client }}</td>
+                <td>{{ quantite_produit.quantite }}</td>
+            </tr>
+        </table>
+        <br>
+
+    {% endfor %}
+{% endfor %}
+
+</body>
+</html>
