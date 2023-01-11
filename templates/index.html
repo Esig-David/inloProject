@@ -28,21 +28,12 @@
                 <tr>
                     <td>{{ commande.date }}</td>
                     <td>{{ commande.client }}</td>
-
-                    {% comment %}{% for produit in produits %}
-                                {% if produit == quantite_produit.produit %}
-                                    <td>{{ produit.nom }}</td>
-                                {% endif %}
-                            {% endfor %}
-
-                            <td>{{ quantite_produit.quantite }}</td>{% endcomment %}
-
                     <input hidden value="{{ commande.id }}">
 
                     {% if commande.is_active == False %}
                         <td class="img_valide"><a href="{% url 'valider_commande' commande.id %}"><img
                                 src="{% static 'icones/valide.png' %}"></a></td>
-                        <td class="img_croix"><a><img src="{% static 'icones/croix.png' %}"></a></td>
+                        <td class="img_croix"><a href="{% url 'supprimer_commande' commande.id %}"><img src="{% static 'icones/croix.png' %}"></a></td>
                     {% else %}
                         <td class="texte_valide">Commande validée</td>
                     {% endif %}

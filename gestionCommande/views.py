@@ -28,5 +28,10 @@ def valider_commande(request, commande_id):
     commande = Commande.objects.get(pk=commande_id)
     commande.is_active = True
     commande.save()
+    return redirect(afficher_index)
 
+
+def supprimer_commande(request, commande_id):
+    commande = Commande.objects.get(pk=commande_id)
+    commande.delete()
     return redirect(afficher_index)
