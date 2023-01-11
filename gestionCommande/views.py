@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from gestionCommande.models import Commande, Produit, Possede
+from gestionCommande.models import *
 from forms import frmCommande
 
 
@@ -22,3 +22,11 @@ def ajouter_commande(request):
             form.save()
             return redirect(afficher_index)
     return render(request, 'ajouter_commande.html',  {"commandes": liste_commandes, "form": formulaire_commande})
+
+
+def valider_commande(request, commande_id):
+    commande = Commande.objects.get(pk=commande_id)
+    commande.is_active = True
+    commande.save()
+
+    return redirect(afficher_index)

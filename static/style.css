@@ -1,0 +1,45 @@
+.img_valide img{
+    height: 20px;
+    width: 20px;
+}
+
+.texte_valide{
+    border: 1px solid black;
+    width: 2%;
+}
+
+.img_croix img{
+    height: 20px;
+}
+
+.img_croix {
+    width: 5%;
+}
+.img_valide {
+    width: 4%;
+}
+
+.commande_tableau {
+    border-collapse: collapse;
+    text-align: center;
+    width: 50%;
+}
+th {
+    width: 15%;
+    text-align: center;
+    border: 1px solid black;
+}
+
+td:not(.img_valide,.img_croix, .texte_valide) {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: none;
+    border-right: 1px solid black;
+    text-align: center;
+    width: 20%;
+}
+
+#tableau {
+    margin-top: 20%;
+    margin-left: 35%;
+}

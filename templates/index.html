@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Gestion des commandes</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
 </head>
 <body>
 
@@ -12,21 +14,47 @@
 
 <br><br>
 
+<div id="tableau">
+    {% for commande in commandes %}
 
-{% for commande in commandes %}
-    {% for quantite_produit in quantite_produits %}
+        <div class="ligne_commande">
 
-        <table>
-            <tr>
-                <td>{{ commande.date }}</td>
-                <td>{{ commande.client }}</td>
-                <td>{{ quantite_produit.quantite }}</td>
-            </tr>
-        </table>
-        <br>
+            <table class="commande_tableau">
+                <tr>
+                    <th>Date</th>
+                    <th>Entreprise</th>
+                </tr>
+            <br>
+                <tr>
+                    <td>{{ commande.date }}</td>
+                    <td>{{ commande.client }}</td>
+
+                    {% comment %}{% for produit in produits %}
+                                {% if produit == quantite_produit.produit %}
+                                    <td>{{ produit.nom }}</td>
+                                {% endif %}
+                            {% endfor %}
+
+                            <td>{{ quantite_produit.quantite }}</td>{% endcomment %}
+
+                    <input hidden value="{{ commande.id }}">
+
+                    {% if commande.is_active == False %}
+                        <td class="img_valide"><a href="{% url 'valider_commande' commande.id %}"><img
+                                src="{% static 'icones/valide.png' %}"></a></td>
+                        <td class="img_croix"><a><img src="{% static 'icones/croix.png' %}"></a></td>
+                    {% else %}
+                        <td class="texte_valide">Commande validée</td>
+                    {% endif %}
+
+
+                </tr>
+            </table>
+        </div>
 
     {% endfor %}
-{% endfor %}
+</div>
+
 
 </body>
 </html>
