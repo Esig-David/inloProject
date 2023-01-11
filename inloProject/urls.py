@@ -21,4 +21,5 @@ urlpatterns = [
     #    path('admin/', admin.site.urls),
     path('', views.afficher_index),
     path('ajouter_commande/', views.ajouter_commande, name="ajouter_commande"),
+    path('valider_commande/<commande_id>', views.valider_commande, name="valider_commande"),
 ]
